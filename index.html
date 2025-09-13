@@ -1,379 +1,197 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>REUSE • LATI — Laboratório de Ativos de TI</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --brand-1:#0a4ea1;     /* azul barra */
-    --brand-2:#1e6be3;     /* azul ações */
-    --brand-2-hover:#165bd0;
-    --bg:#f6f8fc;
-    --card:#fff;
-    --text:#16202a;
-    --muted:#6b7280;
-    --border:#e5e7eb;
-    --radius:14px;
-    --shadow:0 10px 28px rgba(20,24,40,.06), 0 2px 6px rgba(20,24,40,.06);
-    --focus:0 0 0 3px rgba(30,107,227,.22);
-    --ok:#10b981; --warn:#f59e0b; --bad:#ef4444;
-  }
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg)}
-
-  /* Topbar */
-  .topbar{height:64px;background:var(--brand-1);color:#fff;display:flex;align-items:center;gap:12px;padding:0 22px}
-  .brand{font-weight:700;letter-spacing:.2px}
-  .sep{opacity:.45}
-  .tag{padding:3px 8px;border:1px solid #ffffff33;border-radius:999px;font-size:12px}
-
-  /* Wrapper */
-  .wrap{max-width:1180px;margin:0 auto;padding:28px 18px}
-
-  /* Tabs */
-  .tabs{display:flex;gap:8px;flex-wrap:wrap}
-  .tab-btn{
-    background:#fff;border:1px solid var(--border);border-radius:999px;padding:10px 14px;cursor:pointer;
-    font-weight:600;color:#1f2937
-  }
-  .tab-btn.active{background:var(--brand-2);border-color:transparent;color:#fff;box-shadow:0 6px 14px rgba(30,107,227,.18)}
-  .tab-btn:focus{outline:none;box-shadow:var(--focus)}
-
-  /* Cards/sections */
-  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
-  .space{height:14px}
-  .head-small{font:600 12px/1 Inter;letter-spacing:.12em;text-transform:uppercase;color:#6b7280}
-  .title{font-size:22px;margin:6px 0 2px}
-  .sub{color:var(--muted);margin:0 0 8px}
-
-  .grid{display:grid;gap:14px}
-  @media(min-width:900px){ .cols-3{grid-template-columns:repeat(3,1fr)} .cols-2{grid-template-columns:repeat(2,1fr)} }
-
-  .kpi{border:1px solid var(--border);border-radius:12px;padding:14px;background:#fff}
-  .kpi .k{font:600 12px/1 Inter;letter-spacing:.12em;color:#64748b;text-transform:uppercase}
-  .kpi .v{font-size:28px;font-weight:700;margin-top:7px}
-
-  /* Buttons / inputs */
-  .row{display:flex;gap:10px;flex-wrap:wrap}
-  .grow{flex:1 1 220px}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:#fff;cursor:pointer;font-weight:600}
-  .btn.primary{background:var(--brand-2);color:#fff;border-color:transparent}
-  .btn.primary:hover{background:var(--brand-2-hover)}
-  .btn.ghost{background:#fff}
-  .btn.ok{background:var(--ok);color:#fff;border-color:transparent}
-  .btn.warn{background:var(--warn);color:#fff;border-color:transparent}
-  .btn.bad{background:var(--bad);color:#fff;border-color:transparent}
-
-  .input, select, textarea{
-    width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:#fff
-  }
-  textarea{min-height:90px;resize:vertical}
-
-  /* Table */
-  .table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
-  .table th,.table td{padding:12px 14px;text-align:left}
-  .table thead th{background:#f8fafc;color:#475569;font-weight:600}
-  .table tbody tr+tr td{border-top:1px solid var(--border)}
-  .badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:700}
-  .b-ok{background:#e8faf1;color:#166534;border:1px solid #b7f0d1}
-  .b-warn{background:#fff7ed;color:#9a3412;border:1px solid #fed7aa}
-  .b-bad{background:#fee2e2;color:#991b1b;border:1px solid #fecaca}
-
-  .muted{color:#6b7280}
-  .mt-10{margin-top:10px}
-  .mt-16{margin-top:16px}
-  .hidden{display:none}
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LATI • Laboratório de Ativos de TI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- TOPBAR -->
+  <!-- Topo -->
   <header class="topbar">
-    <div class="brand">REUSE</div>
-    <div class="sep">•</div>
-    <div class="brand">LATI</div>
-    <span class="tag">Laboratório de Ativos de TI</span>
+    <div class="logo">L</div>
+    <div class="title">LATI — Laboratório de Ativos de TI</div>
   </header>
 
-  <main class="wrap">
-    <!-- TABS -->
-    <div class="tabs mt-10" id="tabs">
-      <button class="tab-btn active" data-tab="catalogo">Catálogo</button>
-      <button class="tab-btn" data-tab="intake">Informar Peças (Meu Setor)</button>
-      <button class="tab-btn" data-tab="solicitacoes">Solicitações</button>
-      <button class="tab-btn" data-tab="coletas">Coletas</button>
-      <button class="tab-btn" data-tab="relatorios">Relatórios</button>
-    </div>
+  <main class="container">
+    <!-- Cabeçalho + Ações principais -->
+    <section class="card">
+      <div class="page-kicker">Painel do LATI</div>
+      <h1 class="page-title">Catálogo e operações</h1>
+      <p class="page-sub">Gerencie peças, coletas e solicitações internas de maneira centralizada.</p>
 
-    <div class="space"></div>
+      <div class="acoes-principais" aria-label="Ações principais">
+        <button class="btn primary" id="btnNovaPeca">+ Nova peça</button>
+        <button class="btn" id="btnImportar">Importar lote</button>
+        <button class="btn" id="btnExportar">Exportar .csv</button>
+        <button class="btn doar" id="btnDoar">📦 Doar Material</button>
+        <button class="btn requisitar" id="btnRequisitar">🛠️ Requisitar Material</button>
+      </div>
+
+      <div class="notice">
+        Dica: finalize testes e higienização de dados antes de publicar itens no catálogo.
+      </div>
+    </section>
 
     <!-- KPIs -->
     <section class="grid cols-3">
-      <div class="kpi">
+      <div class="stat">
         <div class="k">Peças publicadas</div>
-        <div class="v" id="kpi-publicadas">126</div>
+        <div class="v">126</div>
       </div>
-      <div class="kpi">
+      <div class="stat">
         <div class="k">Solicitações ativas</div>
-        <div class="v" id="kpi-solic">14</div>
+        <div class="v">14</div>
       </div>
-      <div class="kpi">
+      <div class="stat">
         <div class="k">Economia estimada (R$)</div>
-        <div class="v" id="kpi-economia">28.450</div>
+        <div class="v">28.450</div>
       </div>
     </section>
 
-    <!-- CATÁLOGO -->
-    <section id="tab-catalogo" class="mt-16">
-      <div class="card">
-        <div class="head-small">LATI • Catálogo</div>
-        <h2 class="title">Peças disponíveis</h2>
-        <p class="sub">Pesquise por tipo, marca, estado e veja detalhes técnicos.</p>
+    <!-- Abas -->
+    <section class="card" style="margin-top:18px">
+      <nav class="tabs" role="tablist" aria-label="Seções do LATI">
+        <button class="tab-btn" role="tab" aria-selected="true" aria-controls="tab-catalogo" id="tabbtn-catalogo">Catálogo</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-informar" id="tabbtn-informar">Informar Peças</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-solicitacoes" id="tabbtn-solicitacoes">Solicitações</button>
+      </nav>
 
-        <!-- Filtros -->
-        <div class="row mt-10">
-          <select class="grow" id="filtro-tipo">
-            <option value="">Tipo (todos)</option>
-            <option>SSD</option><option>HD</option><option>RAM</option>
-            <option>CPU</option><option>Fonte</option><option>Placa-mãe</option><option>Monitor</option>
-          </select>
-          <select class="grow" id="filtro-marca">
-            <option value="">Marca (todas)</option>
-            <option>Kingston</option><option>Samsung</option><option>Seagate</option>
-            <option>Intel</option><option>Corsair</option><option>Logitech</option>
-          </select>
-          <select class="grow" id="filtro-estado">
-            <option value="">Estado (todos)</option>
-            <option>Aprovado</option><option>Em teste</option><option>Restringido</option>
-          </select>
-          <button class="btn ghost" onclick="aplicarFiltros()">Filtrar</button>
-          <button class="btn" onclick="limparFiltros()">Limpar</button>
-          <button class="btn primary" style="margin-left:auto">Exportar CSV</button>
-        </div>
-
-        <!-- Tabela catálogo -->
-        <table class="table mt-16" id="tabela-catalogo">
+      <!-- Catálogo -->
+      <div class="tab-panel active" id="tab-catalogo" role="tabpanel" aria-labelledby="tabbtn-catalogo">
+        <div class="page-kicker">Catálogo</div>
+        <table class="table" role="table" aria-label="Catálogo LATI">
           <thead>
             <tr>
-              <th>Tipo</th><th>Marca</th><th>Modelo</th><th>Especificação</th><th>Qtd</th><th>Estado</th><th>Ações</th>
+              <th>Tipo</th><th>Marca/Modelo</th><th>Especificações</th><th>Estado</th><th>Ações</th>
             </tr>
           </thead>
           <tbody>
-            <tr data-tipo="SSD" data-marca="Samsung" data-estado="Aprovado">
-              <td>SSD</td><td>Samsung</td><td>860 EVO</td><td>500 GB</td><td>3</td>
-              <td><span class="badge b-ok">Aprovado</span></td>
+            <tr>
+              <td>SSD</td><td>Samsung 860 EVO</td><td>500 GB • SATA</td>
+              <td><span class="badge ok">Aprovado</span></td>
               <td><button class="btn">Ver</button></td>
             </tr>
-            <tr data-tipo="RAM" data-marca="Kingston" data-estado="Em teste">
-              <td>RAM</td><td>Kingston</td><td>DDR4</td><td>8 GB 2666</td><td>6</td>
-              <td><span class="badge b-warn">Em teste</span></td>
-              <td><button class="btn">Ver</button></td>
-            </tr>
-            <tr data-tipo="HD" data-marca="Seagate" data-estado="Aprovado">
-              <td>HD</td><td>Seagate</td><td>Barracuda</td><td>1 TB 7200</td><td>4</td>
-              <td><span class="badge b-ok">Aprovado</span></td>
-              <td><button class="btn">Ver</button></td>
-            </tr>
-            <tr data-tipo="CPU" data-marca="Intel" data-estado="Restringido">
-              <td>CPU</td><td>Intel</td><td>i5-8500</td><td>6C/6T 3.0 GHz</td><td>2</td>
-              <td><span class="badge b-bad">Restringido</span></td>
+            <tr>
+              <td>RAM</td><td>Kingston</td><td>8 GB • DDR4 2666</td>
+              <td><span class="badge warn">Em teste</span></td>
               <td><button class="btn">Ver</button></td>
             </tr>
           </tbody>
         </table>
       </div>
-    </section>
 
-    <!-- INFORMAR PEÇAS (INTAKE) -->
-    <section id="tab-intake" class="mt-16 hidden">
-      <div class="card">
-        <div class="head-small">Meu setor • Enviar peças ao LATI</div>
-        <h2 class="title">Informar peças obsoletas / disponíveis</h2>
-        <p class="sub">Use este formulário para listar itens que o LATI pode recolher e testar.</p>
+      <!-- Informar Peças -->
+      <div class="tab-panel" id="tab-informar" role="tabpanel" aria-labelledby="tabbtn-informar">
+        <div class="page-kicker">Informar peças do seu setor</div>
+        <p class="page-sub">Cadastre materiais obsoletos/disponíveis para coleta pelo LATI.</p>
 
-        <div class="grid cols-2 mt-10">
+        <form class="form-grid cols-2" onsubmit="event.preventDefault(); alert('Registro enviado para análise do LATI.'); this.reset();">
           <div>
-            <label class="head-small">Tipo de peça</label>
-            <select class="input" id="in-tipo">
-              <option>SSD</option><option>HD</option><option>RAM</option><option>CPU</option>
-              <option>Fonte</option><option>Placa-mãe</option><option>Monitor</option><option>Outros</option>
+            <label for="tipo">Tipo</label>
+            <select id="tipo" required>
+              <option value="">Selecione</option>
+              <option>SSD</option><option>HD</option><option>RAM</option><option>CPU</option><option>Fonte</option>
+              <option>Placa-mãe</option><option>Monitor</option><option>Teclado</option><option>Mouse</option>
             </select>
           </div>
           <div>
-            <label class="head-small">Marca</label>
-            <input class="input" id="in-marca" placeholder="Ex.: Kingston, Samsung, Seagate">
-          </div>
-
-          <div>
-            <label class="head-small">Modelo / Part Number</label>
-            <input class="input" id="in-modelo" placeholder="Ex.: M471A1K43CB1, 860 EVO, Barracuda">
+            <label for="marcaModelo">Marca / Modelo</label>
+            <input id="marcaModelo" placeholder="Ex.: Kingston KVR26N19S8/8" required />
           </div>
           <div>
-            <label class="head-small">Capacidade / Especificação</label>
-            <input class="input" id="in-spec" placeholder="Ex.: 8 GB 2666, 500 GB, 1 TB 7200">
-          </div>
-
-          <div>
-            <label class="head-small">Quantidade</label>
-            <input class="input" id="in-quant" type="number" min="1" value="1">
+            <label for="specs">Especificações</label>
+            <input id="specs" placeholder="Ex.: 8GB DDR4 2666, SATA 500GB" />
           </div>
           <div>
-            <label class="head-small">Localização / Setor</label>
-            <input class="input" id="in-local" placeholder="Ex.: Biblioteca Central / TI">
+            <label for="quantidade">Quantidade</label>
+            <input id="quantidade" type="number" min="1" value="1" required />
+          </div>
+          <div>
+            <label for="setor">Setor / Unidade</label>
+            <input id="setor" placeholder="Ex.: NTI / DTI" required />
+          </div>
+          <div>
+            <label for="contato">Contato</label>
+            <input id="contato" placeholder="Nome e ramal/e-mail" required />
+          </div>
+          <div class="cols-2">
+            <label for="obs">Observações</label>
+            <textarea id="obs" placeholder="Estado do item, sanitização de dados, etc."></textarea>
           </div>
 
-          <div class="cols-2" style="grid-column:1/-1">
-            <div>
-              <label class="head-small">Observações</label>
-              <textarea class="input" id="in-obs" placeholder="Estado físico, histórico, compatibilidades, etc."></textarea>
-            </div>
-            <div>
-              <label class="head-small">Anexos (opcional)</label>
-              <input class="input" type="file" multiple>
-              <p class="muted" style="font-size:12px;margin-top:6px">Fotos do item, etiqueta, nota de tombamento etc. (apenas demonstração)</p>
-            </div>
+          <div class="actions-right cols-2">
+            <button class="btn" type="reset">Limpar</button>
+            <button class="btn primary" type="submit">Enviar para coleta</button>
           </div>
-        </div>
-
-        <div class="row mt-16">
-          <button class="btn primary" onclick="simularEnvio()">Enviar para avaliação do LATI</button>
-          <button class="btn">Salvar rascunho</button>
-        </div>
+        </form>
       </div>
 
-      <div class="mt-16 card">
-        <div class="head-small">Meus envios recentes</div>
-        <table class="table mt-10">
-          <thead>
-            <tr><th>Data</th><th>Tipo</th><th>Marca/Modelo</th><th>Qtd</th><th>Status</th></tr>
-          </thead>
-          <tbody id="minha-fila">
-            <tr><td>13/09/2025</td><td>RAM</td><td>Kingston • DDR4 8GB 2666</td><td>4</td><td><span class="badge b-warn">Aguardando coleta</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+      <!-- Solicitações -->
+      <div class="tab-panel" id="tab-solicitacoes" role="tabpanel" aria-labelledby="tabbtn-solicitacoes">
+        <div class="page-kicker">Solicitações</div>
+        <p class="page-sub">Acompanhe pedidos do seu setor e o status no fluxo de aprovação.</p>
 
-    <!-- SOLICITAÇÕES -->
-    <section id="tab-solicitacoes" class="mt-16 hidden">
-      <div class="card">
-        <div class="head-small">LATI • Solicitações</div>
-        <h2 class="title">Pedidos de peças</h2>
-        <p class="sub">Aprovação de chefia segue o fluxo do REUSE/SIPAC. Aqui você enxerga o andamento.</p>
-
-        <table class="table mt-10">
+        <table class="table" role="table" aria-label="Solicitações">
           <thead>
-            <tr><th>#</th><th>Setor</th><th>Item</th><th>Qtd</th><th>Status</th><th>Ações</th></tr>
+            <tr>
+              <th>#</th><th>Setor</th><th>Item</th><th>Status</th><th>Ações</th>
+            </tr>
           </thead>
           <tbody>
-            <tr><td>5123</td><td>CE • Suporte</td><td>SSD 500 GB</td><td>2</td><td><span class="badge b-warn">Aguardando chefia</span></td><td><button class="btn">Detalhes</button></td></tr>
-            <tr><td>5124</td><td>BCZM • TI</td><td>RAM 8 GB 2666</td><td>4</td><td><span class="badge b-ok">Separado</span></td><td><button class="btn">Detalhes</button></td></tr>
-            <tr><td>5125</td><td>ESUFRN • TI</td><td>Fonte 500W</td><td>1</td><td><span class="badge b-bad">Negado</span></td><td><button class="btn">Detalhes</button></td></tr>
+            <tr>
+              <td>1023</td><td>Departamento Y</td><td>SSD 480GB</td>
+              <td><span class="badge ok">Aprovado</span></td>
+              <td><button class="btn">Detalhes</button></td>
+            </tr>
+            <tr>
+              <td>1024</td><td>Laboratório Z</td><td>RAM 8GB DDR4</td>
+              <td><span class="badge warn">Em análise</span></td>
+              <td><button class="btn">Detalhes</button></td>
+            </tr>
           </tbody>
         </table>
       </div>
     </section>
-
-    <!-- COLETAS -->
-    <section id="tab-coletas" class="mt-16 hidden">
-      <div class="card">
-        <div class="head-small">LATI • Coletas</div>
-        <h2 class="title">Agenda e status de coletas</h2>
-        <p class="sub">Itens sinalizados pelos setores para envio ao LATI.</p>
-
-        <table class="table mt-10">
-          <thead>
-            <tr><th>Data</th><th>Setor</th><th>Itens</th><th>Contato</th><th>Status</th><th>Ações</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>16/09/2025</td><td>NTI • Caicó</td><td>HD(6), Teclado(10)</td><td>joao@</td><td><span class="badge b-warn">Agendado</span></td><td><button class="btn ok">Confirmar retirada</button></td></tr>
-            <tr><td>18/09/2025</td><td>STI • Reitoria</td><td>RAM(12), Monitores(3)</td><td>maria@</td><td><span class="badge b-ok">Concluído</span></td><td><button class="btn">Comprovante</button></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
-    <!-- RELATÓRIOS -->
-    <section id="tab-relatorios" class="mt-16 hidden">
-      <div class="card">
-        <div class="head-small">LATI • Relatórios</div>
-        <h2 class="title">Acompanhamento</h2>
-        <p class="sub">Indicadores de reaproveitamento, economia e sustentabilidade.</p>
-
-        <div class="grid cols-3 mt-10">
-          <div class="kpi"><div class="k">Peças reaproveitadas (12 meses)</div><div class="v">1.284</div></div>
-          <div class="kpi"><div class="k">Economia acumulada</div><div class="v">R$ 412.300</div></div>
-          <div class="kpi"><div class="k">Resíduos desviados (kg)</div><div class="v">2.160</div></div>
-        </div>
-
-        <div class="row mt-16">
-          <button class="btn">Exportar PDF</button>
-          <button class="btn">Exportar CSV</button>
-        </div>
-      </div>
-    </section>
-
-    <footer class="muted mt-16" style="text-align:center;font-size:12px">
-      Mock • REUSE.UFRN.BR / LATI — layout demonstrativo (sem backend)
-    </footer>
   </main>
 
-<script>
-  // Troca de abas
-  const tabs = document.querySelectorAll('.tab-btn');
-  const sections = {
-    catalogo: document.getElementById('tab-catalogo'),
-    intake: document.getElementById('tab-intake'),
-    solicitacoes: document.getElementById('tab-solicitacoes'),
-    coletas: document.getElementById('tab-coletas'),
-    relatorios: document.getElementById('tab-relatorios'),
-  };
-  tabs.forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      tabs.forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-      Object.values(sections).forEach(s=>s.classList.add('hidden'));
-      sections[btn.dataset.tab].classList.remove('hidden');
-    });
-  });
+  <footer>© 2025 LATI • Laboratório de Ativos de TI</footer>
 
-  // Filtros simples (client-side mock)
-  function aplicarFiltros(){
-    const t = document.getElementById('filtro-tipo').value;
-    const m = document.getElementById('filtro-marca').value;
-    const e = document.getElementById('filtro-estado').value;
-    const rows = document.querySelectorAll('#tabela-catalogo tbody tr');
-    rows.forEach(tr=>{
-      const ok =
-        (t==='' || tr.dataset.tipo===t) &&
-        (m==='' || tr.dataset.marca===m) &&
-        (e==='' || tr.dataset.estado===e);
-      tr.style.display = ok ? '' : 'none';
+  <script>
+    // Tabs simples
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+    tabButtons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        tabButtons.forEach(b=>b.setAttribute('aria-selected','false'));
+        panels.forEach(p=>p.classList.remove('active'));
+        btn.setAttribute('aria-selected','true');
+        document.getElementById(btn.getAttribute('aria-controls')).classList.add('active');
+      });
     });
-  }
-  function limparFiltros(){
-    ['filtro-tipo','filtro-marca','filtro-estado'].forEach(id=>document.getElementById(id).value='');
-    aplicarFiltros();
-  }
 
-  // Simula envio de intake
-  function simularEnvio(){
-    const tipo = document.getElementById('in-tipo').value;
-    const marca = document.getElementById('in-marca').value || '—';
-    const modelo = document.getElementById('in-modelo').value || '—';
-    const spec = document.getElementById('in-spec').value || '';
-    const q = document.getElementById('in-quant').value || 1;
-    const hoje = new Date().toLocaleDateString('pt-BR');
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${hoje}</td><td>${tipo}</td><td>${marca} • ${modelo} ${spec}</td><td>${q}</td><td><span class="badge b-warn">Aguardando coleta</span></td>`;
-    document.getElementById('minha-fila').prepend(tr);
-    alert('Envio registrado! (mock)');
-  }
-</script>
+    // Placeholders dos botões principais
+    document.getElementById('btnNovaPeca').addEventListener('click', ()=> {
+      document.getElementById('tabbtn-informar').click();
+    });
+    document.getElementById('btnImportar').addEventListener('click', ()=> {
+      alert('Importação de lote — funcionalidade futura.');
+    });
+    document.getElementById('btnExportar').addEventListener('click', ()=> {
+      alert('Exportação CSV — funcionalidade futura.');
+    });
+    document.getElementById('btnDoar').addEventListener('click', ()=> {
+      document.getElementById('tabbtn-informar').click();
+      alert('Use o formulário "Informar Peças" para registrar sua doação.');
+    });
+    document.getElementById('btnRequisitar').addEventListener('click', ()=> {
+      document.getElementById('tabbtn-solicitacoes').click();
+      alert('Selecione um item e abra uma solicitação (fluxo futuro).');
+    });
+  </script>
 </body>
 </html>
 
