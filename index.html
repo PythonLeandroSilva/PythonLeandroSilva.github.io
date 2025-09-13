@@ -1,22 +1,221 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leandro | Página Pessoal</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LATI • Laboratório de Ativos de TI — UFRN</title>
+  <meta name="description" content="LATI — Laboratório de Ativos de TI: modelo de governança para testes, catalogação e reaproveitamento interno de peças de TI na UFRN, integrado ao Reuse/SIPAC." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#1e3c72; --bg2:#2a5298; --bg3:#4a00e0;
+      --panel:#0b1220; --card:#111a2b; --muted:#9fb3c8; --accent:#ffd34d;
+      --ok:#2ecc71; --warn:#ffb020; --bad:#ff5d5d; --border:#1f2a44;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+      color:#fff; background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3)) fixed;
+    }
+    a{color:#fff;text-decoration:none}
+    .wrap{max-width:1080px;margin:0 auto;padding:24px}
+    .nav{display:flex;gap:16px;align-items:center;justify-content:space-between}
+    .nav a.brand{font-weight:800;letter-spacing:.5px}
+    .nav .links a{opacity:.9;padding:8px 12px;border-radius:10px}
+    .nav .links a:hover{background-color:rgba(255,255,255,.1)}
+    .hero{
+      margin-top:24px;border:1px solid var(--border);background:linear-gradient(120deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
+      border-radius:24px;padding:36px
+    }
+    .hero h1{margin:0 0 8px 0;font-size:clamp(28px,4.5vw,40px)}
+    .hero p{margin:0;opacity:.92}
+    .tag{display:inline-flex;gap:8px;align-items:center;background:rgba(255,255,255,.08);border:1px solid var(--border);
+      color:#fff;padding:6px 10px;border-radius:999px;font-size:12px;margin-right:8px}
+    .grid{display:grid;gap:20px}
+    @media(min-width:880px){.grid.cols-2{grid-template-columns:1fr 1fr}}
+    @media(min-width:1100px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}}
+    section{margin:28px 0}
+    .card{
+      background:rgba(9,15,30,.6); border:1px solid var(--border); backdrop-filter: blur(4px);
+      border-radius:18px; padding:18px 20px
+    }
+    .card h3{margin:0 0 10px 0;font-size:18px}
+    .muted{color:var(--muted)}
+    ul.clean{margin:8px 0 0 16px;padding:0}
+    ul.clean li{margin:6px 0}
+    .flow{display:grid;gap:12px}
+    @media(min-width:840px){.flow{grid-template-columns:repeat(6,1fr)}}
+    .step{background:rgba(255,255,255,.06);border:1px solid var(--border);padding:14px;border-radius:14px;text-align:center}
+    .step .n{font-weight:800;font-size:12px;opacity:.8}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,"Courier New",monospace;background:#0b1428;border:1px solid var(--border);padding:2px 6px;border-radius:6px}
+    .kpis{display:grid;gap:12px}
+    @media(min-width:960px){.kpis{grid-template-columns:repeat(3,1fr)}}
+    .kpi{background:rgba(255,255,255,.06);border:1px solid var(--border);padding:16px;border-radius:16px}
+    .kpi .val{font-size:28px;font-weight:800}
+    .foot{opacity:.7; font-size:13px; text-align:center; margin:32px 0}
+    .btn{
+      display:inline-flex;gap:8px;align-items:center;background:linear-gradient(120deg,#5b8cff,#8b5bff);
+      padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.18)
+    }
+    .btn:hover{filter:brightness(1.05)}
+    .pill{padding:6px 10px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.06)}
+    .notice{border-left:4px solid var(--accent);background:rgba(255,255,255,.06);padding:10px 12px;border-radius:12px}
+    .tbl{width:100%;border-collapse:collapse;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+    .tbl th,.tbl td{border-bottom:1px solid var(--border);padding:10px 12px;text-align:left}
+    .tbl th{background:rgba(255,255,255,.08)}
+    .small{font-size:13px}
+  </style>
 </head>
 <body>
-  <div class="container">
-    <h1>👋 Olá, eu sou o Leandro</h1>
-    <p class="intro">Bem-vindo ao meu espaço no GitHub Pages 🚀</p>
+  <div class="wrap">
 
-    <blockquote>
-      "No mundo conectado de hoje, <strong>conhecimento</strong> é poder e 
-      <strong>segurança da informação</strong> é liberdade."
-    </blockquote>
-    
-    <p class="footer">💻 Construindo e aprendendo sempre!</p>
+    <nav class="nav">
+      <a class="brand" href="/">← Voltar ao site</a>
+      <div class="links">
+        <a href="#sobre">Sobre</a>
+        <a href="#objetivos">Objetivos</a>
+        <a href="#fluxo">Fluxo</a>
+        <a href="#catalogo">Catálogo</a>
+        <a href="#kpis">KPIs</a>
+        <a href="#cronograma">Cronograma</a>
+      </div>
+    </nav>
+
+    <header class="hero" id="sobre">
+      <div style="margin-bottom:10px">
+        <span class="tag">UFRN</span>
+        <span class="tag">Governança de TI</span>
+        <span class="tag">Reuse / SIPAC</span>
+      </div>
+      <h1>LATI • Laboratório de Ativos de TI</h1>
+      <p class="muted">
+        Modelo estratégico para <strong>separar, testar, higienizar, catalogar e disponibilizar</strong> peças e
+        equipamentos de informática (HD/SSD, RAM, CPU, fontes, placas etc.) para manutenção interna,
+        com <strong>rastreabilidade</strong> e integração ao <strong>Reuse/SIPAC</strong>.
+      </p>
+      <p class="notice small" style="margin-top:14px">
+        Alinhado a ITIL 4 (ITAM), COBIT 2019, ISO/IEC 19770-1 e à PNRS (Lei 12.305/2010) + Decreto 10.240/2020
+        para logística reversa de eletroeletrônicos inservíveis.
+      </p>
+    </header>
+
+    <section id="objetivos" class="grid cols-2">
+      <div class="card">
+        <h3>Objetivo geral</h3>
+        <p class="muted">Implantar e avaliar um <strong>modelo de governança de ativos de TI</strong> para reaproveitamento interno de peças, integrado ao Reuse/SIPAC e sustentado por dados, processos e indicadores.</p>
+      </div>
+      <div class="card">
+        <h3>Objetivos específicos</h3>
+        <ul class="clean muted">
+          <li>Desenhar processos ponta-a-ponta (entrada → teste → sanitização → classificação → catálogo → atendimento → baixa).</li>
+          <li>Definir papéis (gestor LATI, técnico, curador do catálogo, pontos focais, comitê).</li>
+          <li>Especificar <strong>modelo de dados</strong> do catálogo: specs, laudos, compatibilidades, histórico, QR.</li>
+          <li>Integrar ao <strong>Reuse/SIPAC</strong> (anúncio, aprovação por chefia, transferência automática).</li>
+          <li>Estabelecer <strong>KPIs</strong>: taxa de reaproveitamento, tempo de ciclo, economia, satisfação.</li>
+          <li>Tratar <strong>logística reversa</strong> para itens C (inservíveis) conforme PNRS/Decreto 10.240.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="fluxo">
+      <h2>Fluxo operacional</h2>
+      <div class="flow" style="margin-top:10px">
+        <div class="step"><div class="n">1 • Entrada</div><div class="muted small">Recebimento / pré-intake com foto e origem.</div></div>
+        <div class="step"><div class="n">2 • Triagem</div><div class="muted small">Inspeção rápida e classificação preliminar.</div></div>
+        <div class="step"><div class="n">3 • Testes</div><div class="muted small">SMART discos, memtest RAM, stress CPU/fonte.</div></div>
+        <div class="step"><div class="n">4 • Sanitização</div><div class="muted small">Wipe seguro para mídias (registro do método).</div></div>
+        <div class="step"><div class="n">5 • Catálogo</div><div class="muted small">Ficha técnica + laudo + QR + fotos.</div></div>
+        <div class="step"><div class="n">6 • Publicação</div><div class="muted small">Anúncio interno no Reuse → aprovação → baixa/transferência.</div></div>
+      </div>
+    </section>
+
+    <section id="catalogo" class="grid cols-3">
+      <div class="card">
+        <h3>Campos mínimos (peça)</h3>
+        <ul class="clean muted">
+          <li>Tipo, marca/modelo, <span class="kbd">part number</span>, S/N</li>
+          <li>Capacidade/clock, contadores (quando houver)</li>
+          <li>Resultados de testes + laudo PDF</li>
+          <li>Compatibilidades, estado A/B/C</li>
+          <li>Localização/campus, fotos, QR</li>
+          <li>Histórico de movimentações</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Papéis e permissões</h3>
+        <ul class="clean muted">
+          <li><strong>LATI-Admin</strong> (configurações, auditoria)</li>
+          <li><strong>LATI-Técnico</strong> (entrada, testes, publicação)</li>
+          <li><strong>Curador</strong> (qualidade de dados)</li>
+          <li><strong>Ponto Focal</strong> (solicita/acompanha)</li>
+          <li><strong>Chefia</strong> (aprova no Reuse)</li>
+          <li><strong>DMP/Patrimônio</strong> (conformidade)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Integrações</h3>
+        <ul class="clean muted">
+          <li>SSO do SIPAC</li>
+          <li>Reuse: criar/atualizar anúncio + transferência</li>
+          <li>Chamados de suporte (vínculo opcional)</li>
+          <li>Relatórios e exportações (CSV/JSON)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="kpis">
+      <h2>KPIs de acompanhamento</h2>
+      <div class="kpis" style="margin-top:10px">
+        <div class="kpi">
+          <div class="val">↑</div>
+          <div class="muted">Taxa de reaproveitamento interno</div>
+        </div>
+        <div class="kpi">
+          <div class="val">↓</div>
+          <div class="muted">Tempo de ciclo e lead time de atendimento</div>
+        </div>
+        <div class="kpi">
+          <div class="val">R$</div>
+          <div class="muted">Economia (evitar compra de peças novas)</div>
+        </div>
+        <div class="kpi">
+          <div class="val">♻︎</div>
+          <div class="muted">REE desviado do descarte (kg)</div>
+        </div>
+        <div class="kpi">
+          <div class="val">✔︎</div>
+          <div class="muted">% fichas completas + “first pass yield”</div>
+        </div>
+        <div class="kpi">
+          <div class="val">★</div>
+          <div class="muted">Satisfação de setores atendidos</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="cronograma">
+      <h2>Cronograma (12 meses)</h2>
+      <table class="tbl small" style="margin-top:10px">
+        <thead><tr><th>Etapa</th><th>Descrição</th><th>Período</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Diagnóstico + revisão de literatura</td><td>M1–M2</td></tr>
+          <tr><td>2</td><td>Desenho de processos, papéis e dados</td><td>M3–M4</td></tr>
+          <tr><td>3</td><td>Protótipo do LATI (laudos, QR, catálogo)</td><td>M5–M6</td></tr>
+          <tr><td>4</td><td>Piloto em 1–2 unidades</td><td>M7–M8</td></tr>
+          <tr><td>5</td><td>Avaliação por KPIs + compliance</td><td>M9–M10</td></tr>
+          <tr><td>6</td><td>Institucionalização (POP, treinamento)</td><td>M11–M12</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:14px">
+        <a class="btn" href="#sobre">Saiba mais</a>
+        <span class="pill small">Contato: leandro@ufrn.br</span>
+      </p>
+    </section>
+
+    <p class="foot">© LATI • UFRN — Modelo acadêmico para fins de estudo e prototipação.</p>
   </div>
 </body>
 </html>
