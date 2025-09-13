@@ -1,0 +1,53 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Fundo em degradê */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  background: linear-gradient(135deg, #1e3c72, #2a5298, #4a00e0);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Container central */
+.container {
+  max-width: 800px;
+  padding: 20px;
+}
+
+/* Título principal */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+/* Texto introdutório */
+.intro {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+/* Citação estilizada */
+blockquote {
+  font-size: 1.3rem;
+  font-style: italic;
+  border-left: 4px solid #ffcc00;
+  padding-left: 15px;
+  margin: 20px auto;
+  max-width: 600px;
+}
+
+/* Rodapé simples */
+.footer {
+  margin-top: 30px;
+  font-size: 1rem;
+  opacity: 0.9;
+}
