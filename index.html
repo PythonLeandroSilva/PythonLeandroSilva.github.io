@@ -71,7 +71,7 @@
       </div><span>Material Bibliográfico</span></a>
 
       <!-- Ativos de TI -->
-      <a class="cat cat-ti" href="panel.html" title="Módulo LATI">
+      <a class="cat cat-ti" href="#lati" title="Módulo LATI">
         <div class="cat-ico">
           <svg viewBox="0 0 64 64">
             <rect x="16" y="16" width="32" height="32" rx="6" fill="#1e6be3"/>
@@ -91,15 +91,15 @@
     </div>
   </section>
 
-  <!-- Caixa de destaque LATI -->
-  <section id="lati" class="lati">
+  <!-- Caixa LATI (começa OCULTA; aparece ao clicar em "Ativos de TI") -->
+  <section id="lati" class="lati hidden">
     <div class="lati-inner">
       <h2>Módulo • Ativos de TI (LATI)</h2>
       <p>Catálogo e operações para reaproveitamento de peças e equipamentos de TI pelos TTIs da UFRN.</p>
       <ul class="lati-list">
-        <li>Cadastro rápido de peças e lotes</li>
+        <li>Cadastro de peças com <strong>tombamento de origem</strong></li>
         <li>Fluxo de doação e requisição</li>
-        <li>Rastreabilidade e indicadores (economia estimada)</li>
+        <li>Rastreabilidade e indicadores</li>
       </ul>
       <div class="lati-actions">
         <a class="btn primary" href="panel.html">Abrir painel</a>
@@ -109,7 +109,21 @@
   </section>
 
   <footer class="footer">© 2025 • Demo REUSE + LATI • UFRN</footer>
+
+  <script>
+    // Mostrar a seção LATI somente quando clicar no card (ou quando #lati estiver na URL)
+    function showLATI() {
+      const sec = document.getElementById('lati');
+      sec.classList.remove('hidden');
+      sec.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+    document.querySelector('.cat-ti').addEventListener('click', (e)=>{
+      e.preventDefault();
+      showLATI();
+      history.replaceState(null,'','#lati');
+    });
+    // Se entrar com hash #lati, revelar
+    if (location.hash === '#lati') { showLATI(); }
+  </script>
 </body>
 </html>
-
-

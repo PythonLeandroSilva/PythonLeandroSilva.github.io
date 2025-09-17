@@ -21,6 +21,7 @@ body{
              radial-gradient(900px 700px at -10% -20%,#d7e5ff 0%,transparent 55%),
              var(--bg);
 }
+.hidden{display:none}
 
 /* Appbar */
 .appbar{
@@ -52,7 +53,7 @@ body{
 .search-btn{display:grid;place-items:center;border:1px solid var(--border);background:#fff;border-radius:10px;padding:0 12px;cursor:pointer}
 .search-btn svg{width:20px;height:20px;stroke:#334155;fill:none;stroke-width:2}
 
-/* Conteúdo base (usado também no painel) */
+/* Conteúdo base (home e painel) */
 .container{max-width:1100px;margin:0 auto;padding:44px 16px}
 .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:26px 24px;margin:0 auto 22px}
 .page-kicker{font:600 12px/1 Inter;letter-spacing:.12em;text-transform:uppercase;color:#475569}
@@ -114,7 +115,7 @@ body{
 .tab-panel.active{display:block}
 
 .table{width:100%;border-collapse:separate;border-spacing:0;margin-top:6px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
-.table th,.table td{padding:12px 14px;text-align:left}
+.table th,.table td{padding:12px 14px;text-align:left;vertical-align:top}
 .table thead th{background:#f8fafc;color:#475569;font-weight:600}
 .table tbody tr+tr td{border-top:1px solid var(--border)}
 .badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:600}
@@ -128,6 +129,9 @@ label{font-weight:600;font-size:14px}
 input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#fff;font:inherit}
 textarea{min-height:96px;resize:vertical}
 .actions-right{display:flex;gap:10px;justify-content:flex-end;margin-top:10px}
+.checkline{display:flex;align-items:center;gap:12px}
+.hint{display:block;color:#6b7280;font-size:12px;margin-top:4px}
+.muted{color:#6b7280;font-size:13px}
 
 /* Footer */
 .footer{padding:14px 20px;color:#6b7280;text-align:center;font-size:13px}
