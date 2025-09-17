@@ -93,3 +93,44 @@ body{
 
 /* Footer */
 .footer{padding:14px 20px;color:#6b7280;text-align:center;font-size:13px}
+/* -------- Painel LATI (kpis, tabs, tabela, badges) -------- */
+.link-clean{color:#fff;text-decoration:none}
+.separator{opacity:.8;margin:0 .5rem}
+.acoes-principais{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:18px 0}
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);background:#fff;border-radius:12px;padding:10px 14px;cursor:pointer;font-weight:600;transition:all .2s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus{outline:none;box-shadow:var(--focus)}
+.btn.primary{background:var(--brand-2);color:#fff;border-color:transparent;box-shadow:0 6px 12px rgba(30,107,227,.18)}
+.btn.primary:hover{background:var(--brand-2-pressed)}
+.btn.doar{background:#28a745;color:#fff;border-color:#1e7e34}
+.btn.doar:hover{background:#1e7e34}
+.btn.requisitar{background:#ffc107;color:#1a1f2b;border-color:#e0a800}
+.btn.requisitar:hover{background:#e0a800}
+.notice{background:#fff3cd;border:1px solid #ffe69c;color:#7a5d13;border-radius:12px;padding:12px 14px;margin-top:14px}
+
+.grid{display:grid;gap:16px;margin-top:14px}
+@media (min-width:720px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}.grid.cols-2{grid-template-columns:repeat(2,1fr)}}
+.stat{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px}
+.stat .k{font:600 12px/1 Inter;letter-spacing:.12em;color:#64748b;text-transform:uppercase}
+.stat .v{margin-top:8px;font-size:26px;font-weight:700}
+
+.tabs{display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--border);padding:0 0 8px}
+.tab-btn{border:1px solid var(--border);background:#eef2ff;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:600;color:#0f172a}
+.tab-btn[aria-selected="true"]{background:#dbeafe;border-color:#bfdbfe}
+.tab-panel{display:none;padding-top:14px}
+.tab-panel.active{display:block}
+
+.table{width:100%;border-collapse:separate;border-spacing:0;margin-top:6px;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
+.table th,.table td{padding:12px 14px;text-align:left}
+.table thead th{background:#f8fafc;color:#475569;font-weight:600}
+.table tbody tr+tr td{border-top:1px solid var(--border)}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:12px;font-weight:600}
+.ok{background:#e8faf1;color:#166534;border:1px solid #b7f0d1}
+.warn{background:#fff7ed;color:#9a3412;border:1px solid #fed7aa}
+
+.form-grid{display:grid;gap:12px}
+@media (min-width:680px){.form-grid.cols-2{grid-template-columns:repeat(2,1fr)}}
+label{font-weight:600;font-size:14px}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#fff;font:inherit}
+textarea{min-height:96px;resize:vertical}
+.actions-right{display:flex;gap:10px;justify-content:flex-end;margin-top:10px}
