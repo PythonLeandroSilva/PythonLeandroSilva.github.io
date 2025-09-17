@@ -3,198 +3,158 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>LATI • Laboratório de Ativos de TI</title>
+  <title>REUSE • UFRN (Demo) + Ativos de TI</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Topo -->
-  <header class="topbar">
-    <div class="logo">L</div>
-    <div class="title">LATI — Laboratório De Ativos de TI</div>
+  <!-- Barra superior -->
+  <header class="appbar">
+    <div class="brand">
+      <div class="brand-mark">
+        <!-- elo “reuse” -->
+        <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M15 25a10 10 0 0 1 18-6l4-4A16 16 0 1 0 15 41l7-7h-8l-7 7a16 16 0 1 0 22-23l-4 4A10 10 0 1 1 15 25Z" fill="#9be22d"/></svg>
+      </div>
+      <span class="brand-text">REUSE</span>
+    </div>
+
+    <nav class="top-nav">
+      <button class="nav-btn">Categorias ▾</button>
+      <button class="nav-btn">Anúncios</button>
+      <button class="nav-btn">Meus interesses</button>
+    </nav>
+
+    <div class="profile">
+      <span class="org">STI/REDES</span>
+      <div class="avatar" title="Leandro">L</div>
+    </div>
   </header>
 
-  <main class="container">
-    <!-- Cabeçalho + Ações principais -->
-    <section class="card">
-      <div class="page-kicker">Painel do LATI</div>
-      <h1 class="page-title">Catálogo e operações</h1>
-      <p class="page-sub">Gerencie peças, coletas e solicitações internas de maneira centralizada.</p>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Bem-vindo ao REUSE</h1>
+      <p class="hero-sub">Sistema de reaproveitamento de bens da UFRN</p>
+      <button class="cta">Quero anunciar!</button>
 
-      <div class="acoes-principais" aria-label="Ações principais">
-        <button class="btn primary" id="btnNovaPeca">+ Nova peça</button>
-        <button class="btn" id="btnImportar">Importar lote</button>
-        <button class="btn" id="btnExportar">Exportar .csv</button>
-        <button class="btn doar" id="btnDoar">📦 Doar Material</button>
-        <button class="btn requisitar" id="btnRequisitar">🛠️ Requisitar Material</button>
+      <div class="search">
+        <input type="search" placeholder="Procurar..." aria-label="Pesquisar" />
+        <button class="search-btn" aria-label="Buscar">
+          <svg viewBox="0 0 24 24"><path d="M21 21l-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg>
+        </button>
       </div>
+    </div>
+  </section>
 
-      <div class="notice">
-        Dica: finalize testes e higienização de dados antes de publicar itens no catálogo.
+  <!-- Categorias -->
+  <section class="cats">
+    <div class="cats-grid">
+      <!-- Mobiliário -->
+      <a class="cat" href="#" aria-label="Mobiliário">
+        <div class="cat-ico">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="6" y="22" width="52" height="14" rx="2" fill="#ced7e6"/>
+            <rect x="12" y="38" width="8" height="14" rx="2" fill="#ced7e6"/>
+            <rect x="44" y="38" width="8" height="14" rx="2" fill="#ced7e6"/>
+          </svg>
+        </div>
+        <span>Mobiliário</span>
+      </a>
+
+      <!-- Eletrônicos -->
+      <a class="cat" href="#" aria-label="Eletrônicos">
+        <div class="cat-ico">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="8" y="16" width="48" height="30" rx="4" fill="#ced7e6"/>
+            <rect x="22" y="48" width="20" height="4" rx="2" fill="#ced7e6"/>
+          </svg>
+        </div>
+        <span>Eletrônicos</span>
+      </a>
+
+      <!-- Escritório -->
+      <a class="cat" href="#" aria-label="Escritório">
+        <div class="cat-ico">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="10" y="22" width="44" height="28" rx="4" fill="#ced7e6"/>
+            <rect x="18" y="18" width="28" height="6" rx="2" fill="#ced7e6"/>
+          </svg>
+        </div>
+        <span>Escritório</span>
+      </a>
+
+      <!-- Laboratorial -->
+      <a class="cat" href="#" aria-label="Laboratorial">
+        <div class="cat-ico">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M22 12v10l-8 14a12 12 0 0 0 10 18h16a12 12 0 0 0 10-18l-8-14V12" fill="#ced7e6"/>
+          </svg>
+        </div>
+        <span>Laboratorial</span>
+      </a>
+
+      <!-- Material Bibliográfico -->
+      <a class="cat" href="#" aria-label="Material Bibliográfico">
+        <div class="cat-ico">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M10 16h22a6 6 0 0 1 6 6v26H16a6 6 0 0 1-6-6V16Z" fill="#ced7e6"/>
+            <path d="M32 16h22v26a6 6 0 0 1-6 6H32V22a6 6 0 0 0-6-6Z" fill="#dbe3f2"/>
+          </svg>
+        </div>
+        <span>Material Bibliográfico</span>
+      </a>
+
+      <!-- ✅ Ativos de TI (NOVO) -->
+      <a class="cat cat-ti" href="#lati" aria-label="Ativos de TI" title="Módulo interno: Ativos de TI (LATI)">
+        <div class="cat-ico">
+          <!-- chip/engrenagem -->
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="16" y="16" width="32" height="32" rx="6" fill="#1e6be3"/>
+            <rect x="30" y="8" width="4" height="12" rx="2" fill="#1e6be3"/>
+            <rect x="30" y="44" width="4" height="12" rx="2" fill="#1e6be3"/>
+            <rect x="8" y="30" width="12" height="4" rx="2" fill="#1e6be3"/>
+            <rect x="44" y="30" width="12" height="4" rx="2" fill="#1e6be3"/>
+            <circle cx="32" cy="32" r="9" fill="#fff"/>
+            <circle cx="32" cy="32" r="4" fill="#1e6be3"/>
+          </svg>
+        </div>
+        <span>Ativos de TI</span>
+      </a>
+
+      <!-- Outros -->
+      <a class="cat" href="#" aria-label="Outros">
+        <div class="cat-ico">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="14" y="20" width="36" height="24" rx="4" fill="#ced7e6"/>
+            <rect x="10" y="16" width="44" height="6" rx="3" fill="#ced7e6"/>
+          </svg>
+        </div>
+        <span>Outros</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Seção do módulo LATI (âncora do card “Ativos de TI”) -->
+  <section id="lati" class="lati">
+    <div class="lati-inner">
+      <h2>Módulo • Ativos de TI (LATI)</h2>
+      <p>Catálogo e operações para reaproveitamento de peças e equipamentos de TI pelos TTIs da UFRN.</p>
+
+      <ul class="lati-list">
+        <li>Cadastro rápido de peças e lotes</li>
+        <li>Fluxo de doação e requisição</li>
+        <li>Rastreabilidade e indicadores (economia estimada)</li>
+      </ul>
+
+      <div class="lati-actions">
+        <a class="btn primary" href="#" onclick="alert('Protótipo de painel.');return false;">Abrir painel</a>
+        <a class="btn" href="#topo">Voltar ao topo</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- KPIs -->
-    <section class="grid cols-3">
-      <div class="stat">
-        <div class="k">Peças publicadas</div>
-        <div class="v">126</div>
-      </div>
-      <div class="stat">
-        <div class="k">Solicitações ativas</div>
-        <div class="v">14</div>
-      </div>
-      <div class="stat">
-        <div class="k">Economia estimada (R$)</div>
-        <div class="v">28.450</div>
-      </div>
-    </section>
-
-    <!-- Abas -->
-    <section class="card" style="margin-top:18px">
-      <nav class="tabs" role="tablist" aria-label="Seções do LATI">
-        <button class="tab-btn" role="tab" aria-selected="true" aria-controls="tab-catalogo" id="tabbtn-catalogo">Catálogo</button>
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-informar" id="tabbtn-informar">Informar Peças</button>
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-solicitacoes" id="tabbtn-solicitacoes">Solicitações</button>
-      </nav>
-
-      <!-- Catálogo -->
-      <div class="tab-panel active" id="tab-catalogo" role="tabpanel" aria-labelledby="tabbtn-catalogo">
-        <div class="page-kicker">Catálogo</div>
-        <table class="table" role="table" aria-label="Catálogo LATI">
-          <thead>
-            <tr>
-              <th>Tipo</th><th>Marca/Modelo</th><th>Especificações</th><th>Estado</th><th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>SSD</td><td>Samsung 860 EVO</td><td>500 GB • SATA</td>
-              <td><span class="badge ok">Aprovado</span></td>
-              <td><button class="btn">Ver</button></td>
-            </tr>
-            <tr>
-              <td>RAM</td><td>Kingston</td><td>8 GB • DDR4 2666</td>
-              <td><span class="badge warn">Em teste</span></td>
-              <td><button class="btn">Ver</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Informar Peças -->
-      <div class="tab-panel" id="tab-informar" role="tabpanel" aria-labelledby="tabbtn-informar">
-        <div class="page-kicker">Informar peças do seu setor</div>
-        <p class="page-sub">Cadastre materiais obsoletos/disponíveis para coleta pelo LATI.</p>
-
-        <form class="form-grid cols-2" onsubmit="event.preventDefault(); alert('Registro enviado para análise do LATI.'); this.reset();">
-          <div>
-            <label for="tipo">Tipo</label>
-            <select id="tipo" required>
-              <option value="">Selecione</option>
-              <option>SSD</option><option>HD</option><option>RAM</option><option>CPU</option><option>Fonte</option>
-              <option>Placa-mãe</option><option>Monitor</option><option>Teclado</option><option>Mouse</option>
-            </select>
-          </div>
-          <div>
-            <label for="marcaModelo">Marca / Modelo</label>
-            <input id="marcaModelo" placeholder="Ex.: Kingston KVR26N19S8/8" required />
-          </div>
-          <div>
-            <label for="specs">Especificações</label>
-            <input id="specs" placeholder="Ex.: 8GB DDR4 2666, SATA 500GB" />
-          </div>
-          <div>
-            <label for="quantidade">Quantidade</label>
-            <input id="quantidade" type="number" min="1" value="1" required />
-          </div>
-          <div>
-            <label for="setor">Setor / Unidade</label>
-            <input id="setor" placeholder="Ex.: NTI / DTI" required />
-          </div>
-          <div>
-            <label for="contato">Contato</label>
-            <input id="contato" placeholder="Nome e ramal/e-mail" required />
-          </div>
-          <div class="cols-2">
-            <label for="obs">Observações</label>
-            <textarea id="obs" placeholder="Estado do item, sanitização de dados, etc."></textarea>
-          </div>
-
-          <div class="actions-right cols-2">
-            <button class="btn" type="reset">Limpar</button>
-            <button class="btn primary" type="submit">Enviar para coleta</button>
-          </div>
-        </form>
-      </div>
-
-      <!-- Solicitações -->
-      <div class="tab-panel" id="tab-solicitacoes" role="tabpanel" aria-labelledby="tabbtn-solicitacoes">
-        <div class="page-kicker">Solicitações</div>
-        <p class="page-sub">Acompanhe pedidos do seu setor e o status no fluxo de aprovação.</p>
-
-        <table class="table" role="table" aria-label="Solicitações">
-          <thead>
-            <tr>
-              <th>#</th><th>Setor</th><th>Item</th><th>Status</th><th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1023</td><td>Departamento Y</td><td>SSD 480GB</td>
-              <td><span class="badge ok">Aprovado</span></td>
-              <td><button class="btn">Detalhes</button></td>
-            </tr>
-            <tr>
-              <td>1024</td><td>Laboratório Z</td><td>RAM 8GB DDR4</td>
-              <td><span class="badge warn">Em análise</span></td>
-              <td><button class="btn">Detalhes</button></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </main>
-
-  <footer>© 2025 LATI • Laboratório de Ativos de TI</footer>
-
-  <script>
-    // Tabs simples
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const panels = document.querySelectorAll('.tab-panel');
-    tabButtons.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        tabButtons.forEach(b=>b.setAttribute('aria-selected','false'));
-        panels.forEach(p=>p.classList.remove('active'));
-        btn.setAttribute('aria-selected','true');
-        document.getElementById(btn.getAttribute('aria-controls')).classList.add('active');
-      });
-    });
-
-    // Placeholders dos botões principais
-    document.getElementById('btnNovaPeca').addEventListener('click', ()=> {
-      document.getElementById('tabbtn-informar').click();
-    });
-    document.getElementById('btnImportar').addEventListener('click', ()=> {
-      alert('Importação de lote — funcionalidade futura.');
-    });
-    document.getElementById('btnExportar').addEventListener('click', ()=> {
-      alert('Exportação CSV — funcionalidade futura.');
-    });
-    document.getElementById('btnDoar').addEventListener('click', ()=> {
-      document.getElementById('tabbtn-informar').click();
-      alert('Use o formulário "Informar Peças" para registrar sua doação.');
-    });
-    document.getElementById('btnRequisitar').addEventListener('click', ()=> {
-      document.getElementById('tabbtn-solicitacoes').click();
-      alert('Selecione um item e abra uma solicitação (fluxo futuro).');
-    });
-  </script>
+  <footer class="footer">© 2025 • Demo REUSE + LATI • UFRN</footer>
 </body>
 </html>
-<!-- rebuild -->
-
-
-
