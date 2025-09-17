@@ -129,9 +129,12 @@ label{font-weight:600;font-size:14px}
 input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:#fff;font:inherit}
 textarea{min-height:96px;resize:vertical}
 .actions-right{display:flex;gap:10px;justify-content:flex-end;margin-top:10px}
-.checkline{display:flex;align-items:center;gap:12px}
 .hint{display:block;color:#6b7280;font-size:12px;margin-top:4px}
-.muted{color:#6b7280;font-size:13px}
+
+/* Fieldset/choices */
+.fieldset{border:1px dashed var(--border);border-radius:10px;padding:10px 12px}
+.fieldset legend{padding:0 6px;color:#475569;font-weight:600}
+.choice{display:block;margin:6px 0}
 
 /* Footer */
 .footer{padding:14px 20px;color:#6b7280;text-align:center;font-size:13px}

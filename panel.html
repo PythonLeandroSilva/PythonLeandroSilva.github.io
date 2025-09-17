@@ -25,11 +25,10 @@
   </header>
 
   <main class="container">
-    <!-- Cabeçalho + ações -->
     <section class="card">
       <div class="page-kicker">Painel do LATI</div>
       <h1 class="page-title">Catálogo e operações</h1>
-      <p class="page-sub">Gerencie peças, coletas e solicitações internas de maneira centralizada.</p>
+      <p class="page-sub">Gerencie peças, coletas e solicitações internas com rastreabilidade de origem.</p>
 
       <div class="acoes-principais" aria-label="Ações principais">
         <button class="btn primary" id="btnNovaPeca">+ Nova peça</button>
@@ -66,32 +65,41 @@
           <thead>
             <tr>
               <th>Tipo</th><th>Marca/Modelo</th><th>Especificações</th>
-              <th>Origem (tomb.)</th><th>Estado</th><th>Ações</th>
+              <th>Origem</th><th>Tomb.</th><th>Estado</th><th>Ações</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td>SSD</td><td>Samsung 860 EVO</td><td>500 GB • SATA</td>
-              <td><code>12345sf58</code></td>
-              <td><span class="badge ok">Aprovado</span></td>
-              <td><button class="btn">Ver</button></td>
+              <td>Reaproveitada</td><td><code>12345sf58</code></td>
+              <td><span class="badge ok">Aprovado</span></td><td><button class="btn">Ver</button></td>
             </tr>
             <tr>
               <td>RAM</td><td>Kingston</td><td>8 GB • DDR4 2666</td>
-              <td><code>99887ab10</code></td>
-              <td><span class="badge warn">Em teste</span></td>
-              <td><button class="btn">Ver</button></td>
+              <td>Compra individual</td><td><code>PECA-77123</code></td>
+              <td><span class="badge warn">Em teste</span></td><td><button class="btn">Ver</button></td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <!-- Informar Peças (com rastreabilidade) -->
+      <!-- Informar Peças (com regra de origem) -->
       <div class="tab-panel" id="tab-informar" role="tabpanel" aria-labelledby="tabbtn-informar">
         <div class="page-kicker">Informar peças do seu setor</div>
-        <p class="page-sub">Para peças reutilizadas, informe o <strong>tombamento do ativo de origem</strong> (computador, notebook etc.).</p>
+        <p class="page-sub">Defina a <strong>origem</strong> para aplicar as regras de tombamento.</p>
 
-        <form class="form-grid cols-2" onsubmit="event.preventDefault(); alert('Registro enviado para análise do LATI.'); this.reset(); toggleOrigemRequired();">
+        <form class="form-grid cols-2" onsubmit="event.preventDefault(); alert('Registro enviado para análise do LATI.'); this.reset(); updateOrigemUI();">
+          <!-- Origem -->
+          <div class="cols-2">
+            <fieldset class="fieldset">
+              <legend>Origem da peça</legend>
+              <label class="choice"><input type="radio" name="origemTipo" value="reap" checked> Reaproveitada de equipamento tombado</label>
+              <label class="choice"><input type="radio" name="origemTipo" value="nova_individual"> Peça nova — compra individual</label>
+              <label class="choice"><input type="radio" name="origemTipo" value="nova_estoque"> Peça nova — estoque/kit (sem tombamento)</label>
+            </fieldset>
+          </div>
+
+          <!-- Campos comuns -->
           <div>
             <label for="tipo">Tipo</label>
             <select id="tipo" required>
@@ -101,65 +109,65 @@
               <option>Outro</option>
             </select>
           </div>
-
           <div>
             <label for="marcaModelo">Marca / Modelo</label>
             <input id="marcaModelo" placeholder="Ex.: Kingston KVR26N19S8/8" required />
           </div>
-
           <div>
             <label for="specs">Especificações</label>
             <input id="specs" placeholder="Ex.: 8GB DDR4 2666, SATA 500GB" />
           </div>
-
           <div>
             <label for="quantidade">Quantidade</label>
             <input id="quantidade" type="number" min="1" value="1" required />
           </div>
 
-          <div>
-            <label for="origem">Ativo de origem (tombamento SIPAC)</label>
-            <input id="origem" placeholder="Ex.: 12345sf58" />
-            <small class="hint">Obrigatório para peças retiradas de um equipamento tombado.</small>
+          <!-- Grupo: Reaproveitada -->
+          <div id="grpReap" class="cols-2">
+            <label for="origemTomb">Tombamento do ativo de origem (SIPAC)</label>
+            <input id="origemTomb" placeholder="Ex.: 12345sf58" />
+            <small class="hint">Obrigatório para reaproveitamento — computador/notebook de onde a peça foi retirada.</small>
           </div>
 
+          <!-- Grupo: Compra individual -->
+          <div id="grpCompra" class="cols-2 hidden">
+            <label for="tombPeca">Tombamento da peça (se atribuído)</label>
+            <input id="tombPeca" placeholder="Ex.: PECA-77123" />
+            <label for="docFiscal">Documento fiscal / NE / Processo</label>
+            <input id="docFiscal" placeholder="Ex.: NE 2025.000123 / Proc. SEI 23000.000000/2025-11" />
+          </div>
+
+          <!-- Grupo: Estoque/kit (apenas orientativo) -->
+          <div id="grpEstoque" class="cols-2 hidden">
+            <div class="notice">Para peças de estoque/kit não há tombamento individual. Descreva bem a procedência nas observações.</div>
+          </div>
+
+          <!-- Identificação auxiliar -->
           <div>
             <label for="ns">Nº de série (se aplicável)</label>
             <input id="ns" placeholder="Ex.: S1A2B3C4D5" />
           </div>
-
           <div>
             <label for="etiqueta">Etiqueta interna / patrimônio local</label>
             <input id="etiqueta" placeholder="Ex.: LATI-SSD-042" />
           </div>
 
-          <div>
-            <label for="documento">Comprovante (opcional)</label>
-            <input id="documento" type="file" accept=".pdf,.jpg,.png" />
-          </div>
-
+          <!-- Setor/contato/obs -->
           <div class="cols-2">
             <label for="setor">Setor / Unidade</label>
             <input id="setor" placeholder="Ex.: NTI / DTI" required />
           </div>
-
           <div class="cols-2">
             <label for="contato">Contato</label>
             <input id="contato" placeholder="Nome e ramal/e-mail" required />
           </div>
-
           <div class="cols-2">
             <label for="obs">Observações</label>
-            <textarea id="obs" placeholder="Estado do item, sanitização de dados, data da desmontagem..."></textarea>
-          </div>
-
-          <div class="cols-2 checkline">
-            <label><input type="checkbox" id="pecaNova" /> Peça nova (sem origem de tombamento)</label>
-            <span class="muted">Marcando, o campo de origem torna-se opcional.</span>
+            <textarea id="obs" placeholder="Estado do item, sanitização de dados, data de desmontagem, etc."></textarea>
           </div>
 
           <div class="actions-right cols-2">
-            <button class="btn" type="reset" onclick="setTimeout(toggleOrigemRequired,0)">Limpar</button>
+            <button class="btn" type="reset" onclick="setTimeout(updateOrigemUI,0)">Limpar</button>
             <button class="btn primary" type="submit">Enviar para análise</button>
           </div>
         </form>
@@ -173,19 +181,19 @@
         <table class="table" role="table" aria-label="Solicitações">
           <thead>
             <tr>
-              <th>#</th><th>Setor</th><th>Item</th><th>Origem (tomb.)</th><th>Status</th><th>Ações</th>
+              <th>#</th><th>Setor</th><th>Item</th><th>Origem</th><th>Tomb.</th><th>Status</th><th>Ações</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>1023</td><td>Departamento Y</td><td>SSD 480GB</td><td><code>12345sf58</code></td>
-              <td><span class="badge ok">Aprovado</span></td>
-              <td><button class="btn">Detalhes</button></td>
+              <td>1023</td><td>Departamento Y</td><td>SSD 480GB</td>
+              <td>Reaproveitada</td><td><code>12345sf58</code></td>
+              <td><span class="badge ok">Aprovado</span></td><td><button class="btn">Detalhes</button></td>
             </tr>
             <tr>
-              <td>1024</td><td>Laboratório Z</td><td>RAM 8GB DDR4</td><td><code>99887ab10</code></td>
-              <td><span class="badge warn">Em análise</span></td>
-              <td><button class="btn">Detalhes</button></td>
+              <td>1024</td><td>Laboratório Z</td><td>RAM 8GB DDR4</td>
+              <td>Compra individual</td><td><code>PECA-77123</code></td>
+              <td><span class="badge warn">Em análise</span></td><td><button class="btn">Detalhes</button></td>
             </tr>
           </tbody>
         </table>
@@ -208,7 +216,7 @@
       });
     });
 
-    // Placeholders / toggles
+    // Placeholders
     document.getElementById('btnNovaPeca').addEventListener('click', ()=> {
       document.getElementById('tabbtn-informar').click();
     });
@@ -223,16 +231,11 @@
       alert('Selecione um item e abra uma solicitação (fluxo futuro).');
     });
 
-    // Rastreabilidade: origem obrigatória, exceto peça nova
-    function toggleOrigemRequired(){
-      const chk = document.getElementById('pecaNova');
-      const origem = document.getElementById('origem');
-      if (chk && origem){
-        origem.required = !chk.checked;
-      }
-    }
-    document.getElementById('pecaNova')?.addEventListener('change', toggleOrigemRequired);
-    toggleOrigemRequired();
-  </script>
-</body>
-</html>
+    // UI/validação de origem
+    function updateOrigemUI(){
+      const val = document.querySelector('input[name="origemTipo"]:checked')?.value;
+      const grpReap = document.getElementById('grpReap');
+      const grpCompra = document.getElementById('grpCompra');
+      const grpEstoque = document.getElementById('grpEstoque');
+      const origemTomb = document.getElementById('origemTomb');
+      const tombPeca = document.getEl

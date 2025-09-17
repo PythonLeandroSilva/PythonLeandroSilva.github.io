@@ -91,15 +91,15 @@
     </div>
   </section>
 
-  <!-- Caixa LATI (começa OCULTA; aparece ao clicar em "Ativos de TI") -->
+  <!-- Caixa LATI (começa OCULTA) -->
   <section id="lati" class="lati hidden">
     <div class="lati-inner">
       <h2>Módulo • Ativos de TI (LATI)</h2>
-      <p>Catálogo e operações para reaproveitamento de peças e equipamentos de TI pelos TTIs da UFRN.</p>
+      <p>Catálogo e operações com <strong>rastreabilidade por tombamento</strong> conforme regras da UFRN.</p>
       <ul class="lati-list">
-        <li>Cadastro de peças com <strong>tombamento de origem</strong></li>
-        <li>Fluxo de doação e requisição</li>
-        <li>Rastreabilidade e indicadores</li>
+        <li>Peças reaproveitadas — informar <em>tombamento do ativo de origem</em></li>
+        <li>Peça nova (compra individual) — informar <em>tombamento da peça</em></li>
+        <li>Peça nova (estoque/kit) — sem tombamento</li>
       </ul>
       <div class="lati-actions">
         <a class="btn primary" href="panel.html">Abrir painel</a>
@@ -111,18 +111,15 @@
   <footer class="footer">© 2025 • Demo REUSE + LATI • UFRN</footer>
 
   <script>
-    // Mostrar a seção LATI somente quando clicar no card (ou quando #lati estiver na URL)
+    // Mostrar a LATI só ao clicar (ou se entrar com #lati)
     function showLATI() {
       const sec = document.getElementById('lati');
       sec.classList.remove('hidden');
       sec.scrollIntoView({behavior:'smooth', block:'start'});
     }
     document.querySelector('.cat-ti').addEventListener('click', (e)=>{
-      e.preventDefault();
-      showLATI();
-      history.replaceState(null,'','#lati');
+      e.preventDefault(); showLATI(); history.replaceState(null,'','#lati');
     });
-    // Se entrar com hash #lati, revelar
     if (location.hash === '#lati') { showLATI(); }
   </script>
 </body>
