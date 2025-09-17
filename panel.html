@@ -31,35 +31,37 @@
       <p class="page-sub">Gerencie peças, coletas e solicitações internas com rastreabilidade de origem.</p>
 
       <div class="acoes-principais" aria-label="Ações principais">
-        <button class="btn primary" id="btnNovaPeca">+ Nova peça</button>
-        <button class="btn" id="btnImportar">Importar lote</button>
-        <button class="btn" id="btnExportar">Exportar .csv</button>
-        <button class="btn doar" id="btnDoar">📦 Doar Material</button>
-        <button class="btn requisitar" id="btnRequisitar">🛠️ Requisitar Material</button>
+        <!-- labels que apontam pros radios das abas -->
+        <label class="btn primary" for="tab-informar">+ Nova peça</label>
+        <button class="btn" type="button">Importar lote</button>
+        <button class="btn" type="button">Exportar .csv</button>
+        <label class="btn doar" for="tab-informar">📦 Doar Material</label>
+        <label class="btn requisitar" for="tab-solicitacoes">🛠️ Requisitar Material</label>
       </div>
 
-      <div class="notice">
-        Dica: finalize testes e higienização de dados antes de publicar itens no catálogo.
-      </div>
+      <div class="notice">Dica: finalize testes e higienização de dados antes de publicar itens no catálogo.</div>
     </section>
 
-    <!-- KPIs -->
     <section class="grid cols-3">
       <div class="stat"><div class="k">Peças publicadas</div><div class="v">126</div></div>
       <div class="stat"><div class="k">Solicitações ativas</div><div class="v">14</div></div>
       <div class="stat"><div class="k">Economia estimada (R$)</div><div class="v">28.450</div></div>
     </section>
 
-    <!-- Abas -->
-    <section class="card" style="margin-top:18px">
+    <!-- Radios das abas (CSS-only) -->
+    <input class="tab-radio" type="radio" name="tabs" id="tab-catalogo" checked>
+    <input class="tab-radio" type="radio" name="tabs" id="tab-informar">
+    <input class="tab-radio" type="radio" name="tabs" id="tab-solicitacoes">
+
+    <section class="card tabs-wrap" style="margin-top:18px">
       <nav class="tabs" role="tablist" aria-label="Seções do LATI">
-        <button class="tab-btn" role="tab" aria-selected="true" aria-controls="tab-catalogo" id="tabbtn-catalogo">Catálogo</button>
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-informar" id="tabbtn-informar">Informar Peças</button>
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-solicitacoes" id="tabbtn-solicitacoes">Solicitações</button>
+        <label class="tab-btn" for="tab-catalogo" aria-controls="p-catalogo">Catálogo</label>
+        <label class="tab-btn" for="tab-informar" aria-controls="p-informar">Informar Peças</label>
+        <label class="tab-btn" for="tab-solicitacoes" aria-controls="p-solicitacoes">Solicitações</label>
       </nav>
 
       <!-- Catálogo -->
-      <div class="tab-panel active" id="tab-catalogo" role="tabpanel" aria-labelledby="tabbtn-catalogo">
+      <div class="tab-panel" id="p-catalogo" role="tabpanel" aria-labelledby="tab-catalogo">
         <div class="page-kicker">Catálogo</div>
         <table class="table" role="table" aria-label="Catálogo LATI">
           <thead>
@@ -72,24 +74,23 @@
             <tr>
               <td>SSD</td><td>Samsung 860 EVO</td><td>500 GB • SATA</td>
               <td>Reaproveitada</td><td><code>12345sf58</code></td>
-              <td><span class="badge ok">Aprovado</span></td><td><button class="btn">Ver</button></td>
+              <td><span class="badge ok">Aprovado</span></td><td><button class="btn" type="button">Ver</button></td>
             </tr>
             <tr>
               <td>RAM</td><td>Kingston</td><td>8 GB • DDR4 2666</td>
               <td>Compra individual</td><td><code>PECA-77123</code></td>
-              <td><span class="badge warn">Em teste</span></td><td><button class="btn">Ver</button></td>
+              <td><span class="badge warn">Em teste</span></td><td><button class="btn" type="button">Ver</button></td>
             </tr>
           </tbody>
         </table>
       </div>
 
-      <!-- Informar Peças (com regra de origem) -->
-      <div class="tab-panel" id="tab-informar" role="tabpanel" aria-labelledby="tabbtn-informar">
+      <!-- Informar Peças -->
+      <div class="tab-panel" id="p-informar" role="tabpanel" aria-labelledby="tab-informar">
         <div class="page-kicker">Informar peças do seu setor</div>
         <p class="page-sub">Defina a <strong>origem</strong> para aplicar as regras de tombamento.</p>
 
-        <form class="form-grid cols-2" onsubmit="event.preventDefault(); alert('Registro enviado para análise do LATI.'); this.reset(); updateOrigemUI();">
-          <!-- Origem -->
+        <form class="form-grid cols-2" onsubmit="event.preventDefault(); alert('Registro enviado para análise do LATI.'); this.reset();">
           <div class="cols-2">
             <fieldset class="fieldset">
               <legend>Origem da peça</legend>
@@ -99,7 +100,6 @@
             </fieldset>
           </div>
 
-          <!-- Campos comuns -->
           <div>
             <label for="tipo">Tipo</label>
             <select id="tipo" required>
@@ -122,27 +122,21 @@
             <input id="quantidade" type="number" min="1" value="1" required />
           </div>
 
-          <!-- Grupo: Reaproveitada -->
-          <div id="grpReap" class="cols-2">
+          <!-- Reaproveitada -->
+          <div class="cols-2">
             <label for="origemTomb">Tombamento do ativo de origem (SIPAC)</label>
             <input id="origemTomb" placeholder="Ex.: 12345sf58" />
             <small class="hint">Obrigatório para reaproveitamento — computador/notebook de onde a peça foi retirada.</small>
           </div>
 
-          <!-- Grupo: Compra individual -->
-          <div id="grpCompra" class="cols-2 hidden">
-            <label for="tombPeca">Tombamento da peça (se atribuído)</label>
+          <!-- Compra individual -->
+          <div class="cols-2">
+            <label for="tombPeca">Tombamento da peça (se atribuído; só para compra individual)</label>
             <input id="tombPeca" placeholder="Ex.: PECA-77123" />
             <label for="docFiscal">Documento fiscal / NE / Processo</label>
             <input id="docFiscal" placeholder="Ex.: NE 2025.000123 / Proc. SEI 23000.000000/2025-11" />
           </div>
 
-          <!-- Grupo: Estoque/kit (apenas orientativo) -->
-          <div id="grpEstoque" class="cols-2 hidden">
-            <div class="notice">Para peças de estoque/kit não há tombamento individual. Descreva bem a procedência nas observações.</div>
-          </div>
-
-          <!-- Identificação auxiliar -->
           <div>
             <label for="ns">Nº de série (se aplicável)</label>
             <input id="ns" placeholder="Ex.: S1A2B3C4D5" />
@@ -152,7 +146,6 @@
             <input id="etiqueta" placeholder="Ex.: LATI-SSD-042" />
           </div>
 
-          <!-- Setor/contato/obs -->
           <div class="cols-2">
             <label for="setor">Setor / Unidade</label>
             <input id="setor" placeholder="Ex.: NTI / DTI" required />
@@ -167,14 +160,14 @@
           </div>
 
           <div class="actions-right cols-2">
-            <button class="btn" type="reset" onclick="setTimeout(updateOrigemUI,0)">Limpar</button>
+            <button class="btn" type="reset">Limpar</button>
             <button class="btn primary" type="submit">Enviar para análise</button>
           </div>
         </form>
       </div>
 
       <!-- Solicitações -->
-      <div class="tab-panel" id="tab-solicitacoes" role="tabpanel" aria-labelledby="tabbtn-solicitacoes">
+      <div class="tab-panel" id="p-solicitacoes" role="tabpanel" aria-labelledby="tab-solicitacoes">
         <div class="page-kicker">Solicitações</div>
         <p class="page-sub">Acompanhe pedidos do seu setor e o status no fluxo de aprovação.</p>
 
@@ -188,12 +181,12 @@
             <tr>
               <td>1023</td><td>Departamento Y</td><td>SSD 480GB</td>
               <td>Reaproveitada</td><td><code>12345sf58</code></td>
-              <td><span class="badge ok">Aprovado</span></td><td><button class="btn">Detalhes</button></td>
+              <td><span class="badge ok">Aprovado</span></td><td><button class="btn" type="button">Detalhes</button></td>
             </tr>
             <tr>
               <td>1024</td><td>Laboratório Z</td><td>RAM 8GB DDR4</td>
               <td>Compra individual</td><td><code>PECA-77123</code></td>
-              <td><span class="badge warn">Em análise</span></td><td><button class="btn">Detalhes</button></td>
+              <td><span class="badge warn">Em análise</span></td><td><button class="btn" type="button">Detalhes</button></td>
             </tr>
           </tbody>
         </table>
@@ -202,40 +195,5 @@
   </main>
 
   <footer class="footer">© 2025 LATI • Laboratório de Ativos de TI</footer>
-
-  <script>
-    // Tabs
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const panels = document.querySelectorAll('.tab-panel');
-    tabButtons.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        tabButtons.forEach(b=>b.setAttribute('aria-selected','false'));
-        panels.forEach(p=>p.classList.remove('active'));
-        btn.setAttribute('aria-selected','true');
-        document.getElementById(btn.getAttribute('aria-controls')).classList.add('active');
-      });
-    });
-
-    // Placeholders
-    document.getElementById('btnNovaPeca').addEventListener('click', ()=> {
-      document.getElementById('tabbtn-informar').click();
-    });
-    document.getElementById('btnImportar').addEventListener('click', ()=> alert('Importação de lote — funcionalidade futura.'));
-    document.getElementById('btnExportar').addEventListener('click', ()=> alert('Exportação CSV — funcionalidade futura.'));
-    document.getElementById('btnDoar').addEventListener('click', ()=> {
-      document.getElementById('tabbtn-informar').click();
-      alert('Use o formulário "Informar Peças" para registrar sua doação.');
-    });
-    document.getElementById('btnRequisitar').addEventListener('click', ()=> {
-      document.getElementById('tabbtn-solicitacoes').click();
-      alert('Selecione um item e abra uma solicitação (fluxo futuro).');
-    });
-
-    // UI/validação de origem
-    function updateOrigemUI(){
-      const val = document.querySelector('input[name="origemTipo"]:checked')?.value;
-      const grpReap = document.getElementById('grpReap');
-      const grpCompra = document.getElementById('grpCompra');
-      const grpEstoque = document.getElementById('grpEstoque');
-      const origemTomb = document.getElementById('origemTomb');
-      const tombPeca = document.getEl
+</body>
+</html>

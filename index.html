@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Barra superior -->
   <header class="appbar">
     <div class="brand">
       <div class="brand-mark">
@@ -20,9 +19,9 @@
     </div>
 
     <nav class="top-nav">
-      <button class="nav-btn">Categorias ▾</button>
-      <button class="nav-btn">Anúncios</button>
-      <button class="nav-btn">Meus interesses</button>
+      <button class="nav-btn" type="button">Categorias ▾</button>
+      <button class="nav-btn" type="button">Anúncios</button>
+      <button class="nav-btn" type="button">Meus interesses</button>
     </nav>
 
     <div class="profile">
@@ -31,23 +30,21 @@
     </div>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
     <div class="hero-inner">
       <h1>Bem-vindo ao REUSE</h1>
       <p class="hero-sub">Sistema de reaproveitamento de bens da UFRN</p>
-      <button class="cta">Quero anunciar!</button>
+      <button class="cta" type="button">Quero anunciar!</button>
 
       <div class="search">
         <input type="search" placeholder="Procurar..." aria-label="Pesquisar" />
-        <button class="search-btn" aria-label="Buscar">
+        <button class="search-btn" aria-label="Buscar" type="button">
           <svg viewBox="0 0 24 24"><path d="M21 21l-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg>
         </button>
       </div>
     </div>
   </section>
 
-  <!-- Categorias -->
   <section class="cats">
     <div class="cats-grid">
       <a class="cat" href="#"><div class="cat-ico">
@@ -70,7 +67,6 @@
         <svg viewBox="0 0 64 64"><path d="M10 16h22a6 6 0 0 1 6 6v26H16a6 6 0 0 1-6-6V16Z" fill="#ced7e6"/><path d="M32 16h22v26a6 6 0 0 1-6 6H32V22a6 6 0 0 0-6-6Z" fill="#dbe3f2"/></svg>
       </div><span>Material Bibliográfico</span></a>
 
-      <!-- Ativos de TI -->
       <a class="cat cat-ti" href="#lati" title="Módulo LATI">
         <div class="cat-ico">
           <svg viewBox="0 0 64 64">
@@ -91,13 +87,13 @@
     </div>
   </section>
 
-  <!-- Caixa LATI (começa OCULTA) -->
+  <!-- OCULTO até clicar em Ativos de TI -->
   <section id="lati" class="lati hidden">
     <div class="lati-inner">
       <h2>Módulo • Ativos de TI (LATI)</h2>
       <p>Catálogo e operações com <strong>rastreabilidade por tombamento</strong> conforme regras da UFRN.</p>
       <ul class="lati-list">
-        <li>Peças reaproveitadas — informar <em>tombamento do ativo de origem</em></li>
+        <li>Reaproveitada — informar <em>tombamento do ativo de origem</em></li>
         <li>Peça nova (compra individual) — informar <em>tombamento da peça</em></li>
         <li>Peça nova (estoque/kit) — sem tombamento</li>
       </ul>
@@ -111,16 +107,19 @@
   <footer class="footer">© 2025 • Demo REUSE + LATI • UFRN</footer>
 
   <script>
-    // Mostrar a LATI só ao clicar (ou se entrar com #lati)
-    function showLATI() {
-      const sec = document.getElementById('lati');
+    function showLATI(){
+      var sec = document.getElementById('lati');
+      if (!sec) return;
       sec.classList.remove('hidden');
-      sec.scrollIntoView({behavior:'smooth', block:'start'});
+      try { sec.scrollIntoView({behavior:'smooth', block:'start'}); } catch(e){}
     }
-    document.querySelector('.cat-ti').addEventListener('click', (e)=>{
-      e.preventDefault(); showLATI(); history.replaceState(null,'','#lati');
-    });
-    if (location.hash === '#lati') { showLATI(); }
+    var catTI = document.querySelector('.cat-ti');
+    if (catTI){
+      catTI.addEventListener('click', function(e){
+        e.preventDefault(); showLATI(); try{ history.replaceState(null,'','#lati'); }catch(e){}
+      });
+    }
+    if (location.hash === '#lati'){ showLATI(); }
   </script>
 </body>
 </html>
