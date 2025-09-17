@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Appbar mínima com link de volta -->
   <header class="appbar">
     <div class="brand">
       <div class="brand-mark">
@@ -26,7 +25,6 @@
   </header>
 
   <main class="container">
-    <!-- Cabeçalho + Ações -->
     <section class="card">
       <div class="page-kicker">Painel do LATI</div>
       <h1 class="page-title">Catálogo e operações</h1>
@@ -45,23 +43,12 @@
       </div>
     </section>
 
-    <!-- KPIs -->
     <section class="grid cols-3">
-      <div class="stat kpi">
-        <div class="k">Peças publicadas</div>
-        <div class="v">126</div>
-      </div>
-      <div class="stat kpi">
-        <div class="k">Solicitações ativas</div>
-        <div class="v">14</div>
-      </div>
-      <div class="stat kpi">
-        <div class="k">Economia estimada (R$)</div>
-        <div class="v">28.450</div>
-      </div>
+      <div class="stat"><div class="k">Peças publicadas</div><div class="v">126</div></div>
+      <div class="stat"><div class="k">Solicitações ativas</div><div class="v">14</div></div>
+      <div class="stat"><div class="k">Economia estimada (R$)</div><div class="v">28.450</div></div>
     </section>
 
-    <!-- Abas -->
     <section class="card" style="margin-top:18px">
       <nav class="tabs" role="tablist" aria-label="Seções do LATI">
         <button class="tab-btn" role="tab" aria-selected="true" aria-controls="tab-catalogo" id="tabbtn-catalogo">Catálogo</button>
@@ -69,98 +56,48 @@
         <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-solicitacoes" id="tabbtn-solicitacoes">Solicitações</button>
       </nav>
 
-      <!-- Catálogo -->
       <div class="tab-panel active" id="tab-catalogo" role="tabpanel" aria-labelledby="tabbtn-catalogo">
         <div class="page-kicker">Catálogo</div>
         <table class="table" role="table" aria-label="Catálogo LATI">
-          <thead>
-            <tr>
-              <th>Tipo</th><th>Marca/Modelo</th><th>Especificações</th><th>Estado</th><th>Ações</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Tipo</th><th>Marca/Modelo</th><th>Especificações</th><th>Estado</th><th>Ações</th></tr></thead>
           <tbody>
-            <tr>
-              <td>SSD</td><td>Samsung 860 EVO</td><td>500 GB • SATA</td>
-              <td><span class="badge ok">Aprovado</span></td>
-              <td><button class="btn">Ver</button></td>
-            </tr>
-            <tr>
-              <td>RAM</td><td>Kingston</td><td>8 GB • DDR4 2666</td>
-              <td><span class="badge warn">Em teste</span></td>
-              <td><button class="btn">Ver</button></td>
-            </tr>
+            <tr><td>SSD</td><td>Samsung 860 EVO</td><td>500 GB • SATA</td><td><span class="badge ok">Aprovado</span></td><td><button class="btn">Ver</button></td></tr>
+            <tr><td>RAM</td><td>Kingston</td><td>8 GB • DDR4 2666</td><td><span class="badge warn">Em teste</span></td><td><button class="btn">Ver</button></td></tr>
           </tbody>
         </table>
       </div>
 
-      <!-- Informar Peças -->
       <div class="tab-panel" id="tab-informar" role="tabpanel" aria-labelledby="tabbtn-informar">
         <div class="page-kicker">Informar peças do seu setor</div>
         <p class="page-sub">Cadastre materiais obsoletos/disponíveis para coleta pelo LATI.</p>
 
         <form class="form-grid cols-2" onsubmit="event.preventDefault(); alert('Registro enviado para análise do LATI.'); this.reset();">
-          <div>
-            <label for="tipo">Tipo</label>
+          <div><label for="tipo">Tipo</label>
             <select id="tipo" required>
               <option value="">Selecione</option>
               <option>SSD</option><option>HD</option><option>RAM</option><option>CPU</option><option>Fonte</option>
               <option>Placa-mãe</option><option>Monitor</option><option>Teclado</option><option>Mouse</option>
             </select>
           </div>
-          <div>
-            <label for="marcaModelo">Marca / Modelo</label>
-            <input id="marcaModelo" placeholder="Ex.: Kingston KVR26N19S8/8" required />
-          </div>
-          <div>
-            <label for="specs">Especificações</label>
-            <input id="specs" placeholder="Ex.: 8GB DDR4 2666, SATA 500GB" />
-          </div>
-          <div>
-            <label for="quantidade">Quantidade</label>
-            <input id="quantidade" type="number" min="1" value="1" required />
-          </div>
-          <div>
-            <label for="setor">Setor / Unidade</label>
-            <input id="setor" placeholder="Ex.: NTI / DTI" required />
-          </div>
-          <div>
-            <label for="contato">Contato</label>
-            <input id="contato" placeholder="Nome e ramal/e-mail" required />
-          </div>
-          <div class="cols-2">
-            <label for="obs">Observações</label>
-            <textarea id="obs" placeholder="Estado do item, sanitização de dados, etc."></textarea>
-          </div>
-
-          <div class="actions-right cols-2">
-            <button class="btn" type="reset">Limpar</button>
-            <button class="btn primary" type="submit">Enviar para coleta</button>
-          </div>
+          <div><label for="marcaModelo">Marca / Modelo</label><input id="marcaModelo" placeholder="Ex.: Kingston KVR26N19S8/8" required /></div>
+          <div><label for="specs">Especificações</label><input id="specs" placeholder="Ex.: 8GB DDR4 2666, SATA 500GB" /></div>
+          <div><label for="quantidade">Quantidade</label><input id="quantidade" type="number" min="1" value="1" required /></div>
+          <div><label for="setor">Setor / Unidade</label><input id="setor" placeholder="Ex.: NTI / DTI" required /></div>
+          <div><label for="contato">Contato</label><input id="contato" placeholder="Nome e ramal/e-mail" required /></div>
+          <div class="cols-2"><label for="obs">Observações</label><textarea id="obs" placeholder="Estado do item, sanitização de dados, etc."></textarea></div>
+          <div class="actions-right cols-2"><button class="btn" type="reset">Limpar</button><button class="btn primary" type="submit">Enviar para coleta</button></div>
         </form>
       </div>
 
-      <!-- Solicitações -->
       <div class="tab-panel" id="tab-solicitacoes" role="tabpanel" aria-labelledby="tabbtn-solicitacoes">
         <div class="page-kicker">Solicitações</div>
         <p class="page-sub">Acompanhe pedidos do seu setor e o status no fluxo de aprovação.</p>
 
         <table class="table" role="table" aria-label="Solicitações">
-          <thead>
-            <tr>
-              <th>#</th><th>Setor</th><th>Item</th><th>Status</th><th>Ações</th>
-            </tr>
-          </thead>
+          <thead><tr><th>#</th><th>Setor</th><th>Item</th><th>Status</th><th>Ações</th></tr></thead>
           <tbody>
-            <tr>
-              <td>1023</td><td>Departamento Y</td><td>SSD 480GB</td>
-              <td><span class="badge ok">Aprovado</span></td>
-              <td><button class="btn">Detalhes</button></td>
-            </tr>
-            <tr>
-              <td>1024</td><td>Laboratório Z</td><td>RAM 8GB DDR4</td>
-              <td><span class="badge warn">Em análise</span></td>
-              <td><button class="btn">Detalhes</button></td>
-            </tr>
+            <tr><td>1023</td><td>Departamento Y</td><td>SSD 480GB</td><td><span class="badge ok">Aprovado</span></td><td><button class="btn">Detalhes</button></td></tr>
+            <tr><td>1024</td><td>Laboratório Z</td><td>RAM 8GB DDR4</td><td><span class="badge warn">Em análise</span></td><td><button class="btn">Detalhes</button></td></tr>
           </tbody>
         </table>
       </div>
@@ -170,7 +107,6 @@
   <footer class="footer">© 2025 LATI • Laboratório de Ativos de TI</footer>
 
   <script>
-    // Tabs
     const tabButtons = document.querySelectorAll('.tab-btn');
     const panels = document.querySelectorAll('.tab-panel');
     tabButtons.forEach(btn=>{
@@ -181,25 +117,13 @@
         document.getElementById(btn.getAttribute('aria-controls')).classList.add('active');
       });
     });
-
-    // Ações principais (placeholders)
     document.getElementById('btnNovaPeca').addEventListener('click', ()=> {
       document.getElementById('tabbtn-informar').click();
     });
-    document.getElementById('btnImportar').addEventListener('click', ()=> {
-      alert('Importação de lote — funcionalidade futura.');
-    });
-    document.getElementById('btnExportar').addEventListener('click', ()=> {
-      alert('Exportação CSV — funcionalidade futura.');
-    });
-    document.getElementById('btnDoar').addEventListener('click', ()=> {
-      document.getElementById('tabbtn-informar').click();
-      alert('Use o formulário "Informar Peças" para registrar sua doação.');
-    });
-    document.getElementById('btnRequisitar').addEventListener('click', ()=> {
-      document.getElementById('tabbtn-solicitacoes').click();
-      alert('Selecione um item e abra uma solicitação (fluxo futuro).');
-    });
+    document.getElementById('btnImportar').addEventListener('click', ()=> alert('Importação de lote — funcionalidade futura.'));
+    document.getElementById('btnExportar').addEventListener('click', ()=> alert('Exportação CSV — funcionalidade futura.'));
+    document.getElementById('btnDoar').addEventListener('click', ()=> { document.getElementById('tabbtn-informar').click(); alert('Use o formulário "Informar Peças" para registrar sua doação.'); });
+    document.getElementById('btnRequisitar').addEventListener('click', ()=> { document.getElementById('tabbtn-solicitacoes').click(); alert('Selecione um item e abra uma solicitação (fluxo futuro).'); });
   </script>
 </body>
 </html>
