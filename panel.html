@@ -31,7 +31,6 @@
       <p class="page-sub">Gerencie peças, coletas e solicitações internas com rastreabilidade de origem.</p>
 
       <div class="acoes-principais" aria-label="Ações principais">
-        <!-- labels que apontam pros radios das abas -->
         <label class="btn primary" for="tab-informar">+ Nova peça</label>
         <button class="btn" type="button">Importar lote</button>
         <button class="btn" type="button">Exportar .csv</button>
@@ -122,14 +121,12 @@
             <input id="quantidade" type="number" min="1" value="1" required />
           </div>
 
-          <!-- Reaproveitada -->
           <div class="cols-2">
             <label for="origemTomb">Tombamento do ativo de origem (SIPAC)</label>
             <input id="origemTomb" placeholder="Ex.: 12345sf58" />
             <small class="hint">Obrigatório para reaproveitamento — computador/notebook de onde a peça foi retirada.</small>
           </div>
 
-          <!-- Compra individual -->
           <div class="cols-2">
             <label for="tombPeca">Tombamento da peça (se atribuído; só para compra individual)</label>
             <input id="tombPeca" placeholder="Ex.: PECA-77123" />
@@ -169,8 +166,61 @@
       <!-- Solicitações -->
       <div class="tab-panel" id="p-solicitacoes" role="tabpanel" aria-labelledby="tab-solicitacoes">
         <div class="page-kicker">Solicitações</div>
-        <p class="page-sub">Acompanhe pedidos do seu setor e o status no fluxo de aprovação.</p>
+        <p class="page-sub">Acompanhe pedidos do seu setor e abra novas solicitações de peças.</p>
 
+        <!-- Toggle sem JS para abrir o formulário -->
+        <input type="checkbox" id="abrir-solic" class="toggle" hidden>
+        <div class="toolbar">
+          <label for="abrir-solic" class="btn primary">+ Nova solicitação</label>
+        </div>
+
+        <div class="collapsible">
+          <form class="form-grid cols-2" onsubmit="event.preventDefault(); alert('Solicitação enviada para análise.'); this.reset(); document.getElementById('abrir-solic').checked=false;">
+            <div>
+              <label for="itemSolic">Peça solicitada</label>
+              <select id="itemSolic" required>
+                <option value="">Selecione</option>
+                <option>SSD • Samsung 860 EVO • 500GB SATA</option>
+                <option>RAM • Kingston • 8GB DDR4 2666</option>
+                <option>Outro (descrever nas observações)</option>
+              </select>
+            </div>
+            <div>
+              <label for="qtdSolic">Quantidade</label>
+              <input id="qtdSolic" type="number" min="1" value="1" required>
+            </div>
+
+            <div>
+              <label for="setorSolic">Setor solicitante</label>
+              <input id="setorSolic" placeholder="Ex.: STI / Redes" required>
+            </div>
+            <div>
+              <label for="ttiNome">TTI responsável</label>
+              <input id="ttiNome" placeholder="Nome completo" required>
+            </div>
+
+            <div>
+              <label for="contatoTTI">Contato do TTI</label>
+              <input id="contatoTTI" placeholder="Ramal / e-mail" required>
+            </div>
+            <div>
+              <label for="refTomb">Ref. ao tombamento de origem (se conhecido)</label>
+              <input id="refTomb" placeholder="Ex.: 12345sf58">
+            </div>
+
+            <div class="cols-2">
+              <label for="obsSolic">Observações</label>
+              <textarea id="obsSolic" placeholder="Justificativa da necessidade, local de instalação, prazo desejado, etc."></textarea>
+            </div>
+
+            <div class="actions-right cols-2">
+              <label class="btn" for="abrir-solic">Cancelar</label>
+              <button class="btn primary" type="submit">Enviar solicitação</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Lista de solicitações -->
         <table class="table" role="table" aria-label="Solicitações">
           <thead>
             <tr>
